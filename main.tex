@@ -1,0 +1,66 @@
+\RequirePackage{silence}
+\WarningFilter{scrreprt}{Usage of package `titlesec'}
+\WarningFilter{scrreprt}{Activating an ugly workaround}
+\WarningFilter{titlesec}{Non standard sectioning command detected}
+\WarningFilter{microtype}{protrusion codes list}
+\WarningFilter{latexfont}{font}
+\WarningFilter{latexfont}{Some font shapes}
+\WarningFilter{latex}{U+200B}
+
+% Black bar to identify overfull hbox !
+\overfullrule=2cm
+
+\documentclass[11pt,a4paper]{book}
+\input{config/packages} % mise en forme globale du document
+\input{config/macro.tex} % macro Latex
+\input{glossaire.tex} % import du glossaire
+\addbibresource{./refs.bib}
+
+
+\pretitle{
+    \begin{center}
+    \includegraphics[width=0.6\textwidth]{temp-boario-logo}\vspace{2cm} \\ % Logo
+    \LARGE
+}
+\posttitle{\end{center}\vspace{2cm}}
+
+% Title page content
+\title{\textbf{The Adaptive Regional Input Output model} \\[0.5cm]
+  \huge An extensive indirect impact assessment model and its python implementation.}
+\author{\Large Samuel Juhel}
+\date{\large \today}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\begin{singlespace} % réduction de l'interligne pour condenser
+  % Utiliser \adjustmtc si un décalage apparaît dans les petites tables des
+  % matières
+  \tableofcontents\newpage
+  {\printglossary[type=\acronymtype,title=Acronyms]}%\adjustmtc{}%
+\end{singlespace}
+
+%%%%%%%%%%%%%%%% CHAPITRES %%%%%%%%%%%%%%%%%%
+\mainmatter
+\setcounter{page}{1}
+\input{lit-review}
+\input{model}
+
+%%%%%%%%%%%%%%%% AUTRES PAGES %%%%%%%%%%%%%%%%%%
+
+\begin{singlespace}
+  \setlength\labelalphawidth{0em}
+  \small\printbibliography[heading=bibintoc,title=Full bibliography]
+\end{singlespace}
+
+\end{document}
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-engine: xetex
+%%% End:

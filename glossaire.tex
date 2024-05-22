@@ -1,0 +1,44 @@
+\usepackage[acronym,toc,nogroupskip,section=chapter,nonumberlist,nopostdot]{glossaries}
+\makeglossaries{}
+
+% Pour les anglicisme
+% \newacronymen{ref}{accro}{longname}{traduction}
+\newcommand{\newacronymen}[4]{\newacronym{#1}{#2}{\textit{#3} (#4)}}
+
+%% Info
+\newacronym[longplural=Social Accounting Matrices]{SAM}{SAM}{Social Accounting
+  Matrix}
+\newacronym[shortplural=SWLs, longplural=Specific Warming
+Levels]{SWL}{SWL}{Specific Warming Level}
+\newacronym{ABM}{ABM}{Agent-Based Model}
+\newacronym{API}{API}{Application Programming Interface}
+\newacronym{CES}{CES}{Constant Elasticity of Substitution}
+\newacronym{CGE}{CGE}{Computable General Equilibrium}
+\newacronym{EAOL}{EAOL}{Estimated Annual Output Losses}
+\newacronym[shortplural=GCMs, longplural=Global Circulation Models]{GCM}{GCM}{Global Circulation Model}
+\newacronym{GDP}{GDP}{Gross Domestic Product}
+\newacronym{GVA}{GVA}{Gross Value Added}
+\newacronym{IEL}{IEL}{Indirect Economic Losses}
+\newacronym[shortplural=LIOTs, longplural=Local Input Output
+Tables]{LIOT}{LIOT}{Local Input Output Table}
+\newacronym[shortplural=MRIOTs, longplural=Multi Regional Input Output
+Tables]{MRIOT}{MRIOT}{Multi Regional Input Output Table}
+\newacronymen{NUTS}{NUTS}{Nomenclature des Unités Territoriales Statistiques}{Nomenclature of Territorial Units for Statistics}
+\newacronym{RCP}{RCP}{Representative Concentration Pathways}
+\newacronym{SA}{SA}{Sensitivity Analysis}
+\newacronym{VA}{VA}{Value Added}
+\newacronym{ipcc}{IPCC}{Intergovernemental Panel on Climate Change}
+\newacronym{ARIO}{ARIO}{Adaptive Regional Input Output}
+\newacronym{DBSCAN}{DBSCAN}{Density-Based Spatial Clustering of Applications with Noise}
+\newacronym{IO}{IO}{Input-Output}
+\newacronym{MRIA}{MRIA}{Multi-Regional Impact Assessment}
+\newacronym{MRIO}{MRIO}{Multi Regional Input-Output}
+\newacronym{RoW}{RoW}{Rest of the World}
+\newacronym{CMIP}{CMIP}{Coupled Model Inter-comparison Project}
+\newacronym{UNDRR}{UNDRR}{United Nations Office for Disaster Risk Reduction}
+\newacronym{GTAP}{GTAP}{Global Trade Analysis Project}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: "main"
+%%% End:
