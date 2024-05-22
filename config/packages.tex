@@ -99,76 +99,12 @@
     captionpos=b
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%% Header / Foot %%%%%%%%%%%
-\usepackage{fancyhdr,emptypage} % garantit que les pages blanches avant les débuts de chapitres soient vraiment blanches (pas d'en-tête ni de pied de page)
-\let\cleardoublepage\clearpage
-
-\fancypagestyle{plain}{ %% Page chapitre, toc ...
-    \fancyhead{}\fancyfoot[C]{\thepage}
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
-}
-
-%%%%%%%%%%% Page normale
-\pagestyle{fancy}
-    % \renewcommand{\chaptermark}[1]{\markboth{\chaptername \ \thechapter.\ #1}{}} % sert à personnaliser l'affichage de \leftmark (ici : le mot "Chapitre", le numéro, un point, et le titre du chapitre, sans écrire en majuscules)
-    % \renewcommand{\chaptermark}[1]{\markleft{\chaptername \ \thechapter.\ #1}{}}
-    % \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}} % sert à personnaliser l'affichage de \rightmark (ici : le numéro et le titre de la section en cours, sans écrire en majuscules)
-    \fancyhf{} % assure que les entête et pieds de page sont vides au départ
-    \fancyhead[LE]{\selectfont\nouppercase{\leftmark}}
-    \fancyhead[RO]{\selectfont\nouppercase{\rightmark}}
-    \fancyfoot[C]{\thepage}
-% Explications :
-% L = left, R = right, C = center, E = even pages, O = odd pages
-%\leftmark : adds name and number of the current top-level structure (for example, Chapter for reports and books classes; Section for articles ) in uppercase letters.
-%\rightmark : adds name and number of the current next to top-level structure (Section for reports and books; Subsection for articles) in uppercase letters.
-
-%%%%%%%%%%% Personnaliser les premières pages des chapitres
-\usepackage[Lenny]{fncychap}
-\ChNameVar{\fontsize{25}{25}\usefont{OT1}{phv}{m}{n}\selectfont}
-\ChRuleWidth{0pt}
-\ChNumVar{\fontsize{60}{62}\selectfont\textcolor{curcolor}}
-
-\makeatletter
-\ChTitleVar{\Huge\rm}
-\renewcommand{\DOCH}{%
-\setlength{\fboxrule}{\RW} % Let fbox lines be controlled by
-\fbox{\CNV\FmN{\@chapapp}\space \CNoV\thechapter}\par\nobreak{}
-\vskip 20\p@}
-\renewcommand{\DOTIS}[1]{%
-\CTV\bfseries\FmTi{#1}\par\nobreak{}
-\vskip 20\p@}
-\makeatother
-
-\renewcommand{\thesection}{\arabic{section}}
-
-% Pour la table des matières
-\usepackage[nohints,tight]{minitoc}		% Mini table des matières, en français
-\setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
-\setlength{\mtcindent}{-1em} % décalage des minitoc à gauche
-\dominitoc{}
-
-\usepackage[nottoc]{tocbibind} % pour que la bibliographie apparaisse dans la table des matières (avec l'option pour que la table des matières elle-même n'apparaisse pas dans la table des matières).
-% \usepackage{tocloft}% pour pouvoir modifier les tailles d'espacement dans la table des matières
-\usepackage[titles]{tocloft}
-\setlength{\cftchapnumwidth}{6.5em} % Adjust the value as needed
-\renewcommand{\cftchappresnum}{Chapter\ }
-\renewcommand{\cftchapaftersnum}{\ --}
-% Fix space between numbering and figure caption in list of figures %%%
-\setlength{\cftfignumwidth}{3em}
-\setlength{\cfttabnumwidth}{3em}
-%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%% Divers %%%%%%%%%%%
 \usepackage{csquotes}
 \usepackage[colorinlistoftodos,prependcaption,textsize=scriptsize,
 textwidth=2.2cm]{todonotes}
 \usepackage[inline,shortlabels]{enumitem}
 \usepackage{textcomp} % rajoute des symboles
-\usepackage{epigraph} % pour rajouter des citations en début de chapitre  \epigraph{Citation}}{Auteur}
 \usepackage{titling}
 \usepackage{lipsum}
 \usepackage{threeparttable}
@@ -180,25 +116,6 @@ textwidth=2.2cm]{todonotes}
 \usepackage{tablefootnote}
 \usepackage{url}
 
-%%% Have per chapter appendix with correct counter and so on %%%
-\usepackage[title]{appendix}
-\usepackage{chngcntr}
-\usepackage{etoolbox}
-\AtBeginEnvironment{subappendices}{%
-   \newpage
-%   \section*{Appendix}
-%   \addcontentsline{toc}{section}{\protect\numberline{\thesection}Appendix}
-% %  \counterwithin{figure}{section}
-% %  \counterwithin{table}{section}
-}
-% End of subappendices environment
-%\AtEndEnvironment{subappendices}{%
-%  \counterwithout{figure}{section}
-%  \counterwithout{table}{section}
-%}
-%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%% Links ref  %%%%%%%%%%%
 \usepackage{bookmark}
 \usepackage{acronym}
@@ -222,79 +139,6 @@ textwidth=2.2cm]{todonotes}
 	linkcolor= color_link, % choix de la couleur des liens internes (table des matières, etc.)
 	citecolor=color_ref % choix de la couleur des liens de citations
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%% Bibliography ref  %%%%%%%%%%%
-\usepackage[hyperref=true,%
-      natbib=true,%
-			backref=true,date=year,%
-			backend=biber,%
-			url=false,doi=false,isbn=false,%
-			minbibnames=6, % nb min authors in biblio
-			maxbibnames=6, % nb max authors in biblio
-			maxcitenames=1,mincitenames=1, % nb min authors as textual
-			maxalphanames=1, %nb author ref
-			style=authoryear,%authoryear, numeric ,  alphabetic
-			sorting=nyt,%
-      refsegment=chapter % references per chapters
-      ]{biblatex}%
-
-\defbibheading{subbibforchap}[Chapter~\thechapter{} Bibliography]{\section*{#1}}
-\renewcommand*{\bibfont}{\footnotesize}
-\setlength\bibitemsep{\itemsep}
-\renewbibmacro{in:}{} % remove In
-
-\renewcommand*{\labelalphaothers}{}
-\DeclareLabelalphaTemplate{
-  \labelelement{
-    \field[final]{shorthand}
-    \field{labelname}
-    \field{label}
-  }
-  \labelelement{\literal{,\addhighpenspace}}
-  \labelelement{\field{year}}
-}
-
-\AtEveryBibitem{%
-    \clearfield{note} % Remove note
-    \clearlist{language} % Remove doi
-}
-
-% >> bib field filter
-\DeclareSourcemap{
-    \maps[datatype=bibtex]{
-        % remove fields that are always useless
-        \map{
-            \step[fieldset=abstract, null]
-            \step[fieldset=pagetotal, null]
-            \step[fieldset=note, null]
-        }
-        % remove URLs for types that are primarily printed
-        \map{
-            \pernottype{software}
-            \pernottype{online}
-            \pernottype{report}
-            \pernottype{techreport}
-            \pernottype{standard}
-            \pernottype{manual}
-            \pernottype{misc}
-            \step[fieldset=url, null]
-            \step[fieldset=urldate, null]
-        }
-        \map{
-            \pertype{inproceedings}
-            % remove mostly redundant conference information
-            \step[fieldset=venue, null]
-            \step[fieldset=eventdate, null]
-            \step[fieldset=eventtitle, null]
-            % do not show ISBN for proceedings
-            \step[fieldset=isbn, null]
-            % Citavi bug
-            \step[fieldset=volume, null]
-        }
-      }
-    }
-% <<
 
 % \usepackage{mystyle}
 

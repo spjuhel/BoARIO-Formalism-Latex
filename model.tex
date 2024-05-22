@@ -1,7 +1,8 @@
-\chapter{Description of the ARIO indirect economic cost model}\label{ch_boario}
+\documentclass[main.tex]{subfiles}
+\begin{document}
 
-\addcontentsline{lof}{chapter}{Chapter 3 -- Description of the ARIO indirect economic cost model}
-\addcontentsline{lot}{chapter}{Chapter 3 -- Description of the ARIO indirect economic cost model}
+
+\notinsubfile{\chapter{Description of the ARIO indirect economic cost model}\label{ch_boario}}
 
 \section{Short Description}
 \label{sec:depth-descr-ario}
@@ -96,11 +97,11 @@ differentiate the ``rebuilding'' and ``recovery'' cases depending on whether the
 model has to answer a reconstruction demand to recover from the disaster or not.
 
 \begin{figure*}[ht]
-\includegraphics[width=0.9\textwidth]{imgs/ARIO-basic-responses}
-\caption[ARIO elementary responses]{ARIO elementary responses. The red dotted
-  line represent a shock happening. The blue and yellow areas represent respectively the production
-  losses and gains relative to a counterfactual with no shock. See a more detailed
-  description in~\cref{sec:qualitative-behavior}.\label{fig:ario-responses}}
+  \includegraphics[width=0.9\textwidth]{imgs/ARIO-basic-responses}
+  \caption[ARIO elementary responses]{ARIO elementary responses. The red dotted
+    line represent a shock happening. The blue and yellow areas represent respectively the production
+    losses and gains relative to a counterfactual with no shock. See a more detailed
+    description in~\cref{sec:qualitative-behavior}.\label{fig:ario-responses}}
 \end{figure*}
 
 \begin{enumerate}
@@ -113,29 +114,29 @@ model has to answer a reconstruction demand to recover from the disaster or not.
   affects other industries, and if not, on the functional form of the exogenous
   recovery of production capacity\footnote{In this thesis, for the recovery case, we present results
     using a linear recovery function, but the implementation allow for convex or
-  concave functions, as well as custom ones. We ran simulations that we do not
-present here and found it to have only a marginal influence compared to
-other modeling choices.}). Possibly, a small overshoot to refill possible
+    concave functions, as well as custom ones. We ran simulations that we do not
+    present here and found it to have only a marginal influence compared to
+    other modeling choices.}). Possibly, a small overshoot to refill possible
   remaining gaps in inventories can be observed before initial equilibrium is found again.
 \item[b)] If a shortage does happen, it slows down the recovery of the production
-to its initial amount, extending the recovery period. It
-may also slightly increase the overshoot in production as inventory
-gaps are increased by the longer recovery.
+  to its initial amount, extending the recovery period. It
+  may also slightly increase the overshoot in production as inventory
+  gaps are increased by the longer recovery.
 \item[c)] When the industry answers a reconstruction demand, but no shortage occurs,
-production rises more sharply in response to the increased scarcity created
-by the rebuilding demand. Production also continues to increase for a longer time, as
-long as total demand is not met. Once production meets total demand, it starts
-decreasing toward the initial level as the remaining reconstruction demand and
-inventory gaps are answered.
+  production rises more sharply in response to the increased scarcity created
+  by the rebuilding demand. Production also continues to increase for a longer time, as
+  long as total demand is not met. Once production meets total demand, it starts
+  decreasing toward the initial level as the remaining reconstruction demand and
+  inventory gaps are answered.
 \item[d)] When a shortage happens while the industry has to answer a rebuilding
   demand, production reduces to match the constraint from its inventories.
-As long as total demand remains higher than production for the input(s)
-responsible for the shortage, the inventory gap continues to increase,
-and thus, the production to decrease. This stops when production becomes low enough
-and received orders high enough, such that the inventory gap starts decreasing
-(the inflexion point of the drop in production).
-Production then increases back as in the last phase of c), but more sharply, here,
-due to a higher remaining demand from orders to refill inventories and reconstruction.
+  As long as total demand remains higher than production for the input(s)
+  responsible for the shortage, the inventory gap continues to increase,
+  and thus, the production to decrease. This stops when production becomes low enough
+  and received orders high enough, such that the inventory gap starts decreasing
+  (the inflexion point of the drop in production).
+  Production then increases back as in the last phase of c), but more sharply, here,
+  due to a higher remaining demand from orders to refill inventories and reconstruction.
 \end{enumerate}
 
 As stated previously, actual responses are of course more complex, as
@@ -157,9 +158,9 @@ are made, and several limitations exist.
 
 \begin{itemize}
 \item The production is Leontief-based: no substitution is possible between different
-inputs.
+  inputs.
 \item Conversely, goods produced in the same sector but in different locations are perfect
-substitutes.
+  substitutes.
 \item Industries can always hire (for overproduction), there is no limit to the
   amount of available workers.
 \item Industries as well as households can always buy final products (they are
@@ -191,7 +192,7 @@ overproduction would overall increase the indirect impacts
 Additionally, our consideration of final demand could be enhanced: it currently
 remains fixed at each step while shifts in consumption behavior following a
 natural disaster have been observed \parencite{kennett-hensel-2012-limin-consum,
-alatrista-salas-2021-impac-natur}. We do consider a ``shift'' in demand
+  alatrista-salas-2021-impac-natur}. We do consider a ``shift'' in demand
 \emph{via} the reconstruction demand, but this currently remains independent
 from the households final demand, though we can assume shifts in final demand to
 have similar effects as changes in the reconstruction demand.
@@ -279,11 +280,11 @@ provide the notations we will use throughout this thesis:
   the same size $m \times n$, we define the ``Hadamard'' division, denoted by $A
   \oslash B = C$ where each element $c_{ij}$ of $C$ is given by:
   \[
-  c_{ij} =
-  \begin{cases}
-    \dfrac{a_{ij}}{b_{ij}} & \text{if } b_{ij} \neq 0\\
-                             0 & \text{if } b_{ij} = 0
-  \end{cases}
+    c_{ij} =
+    \begin{cases}
+      \dfrac{a_{ij}}{b_{ij}} & \text{if } b_{ij} \neq 0\\
+      0 & \text{if } b_{ij} = 0
+    \end{cases}
   \]
 \item We will denote by $\bm{e}_{m \times n}$ the $m \times n$ matrix with all
   elements equal to $e$. For simplicity we will write, $\bm{e}_n = \bm{e}_{n
@@ -345,18 +346,18 @@ provide the notations we will use throughout this thesis:
                                                                      in a
                                                                      region)
                                                                      indices. &
-                                                                                 $|\firmsset|
-                                                                                 =
-                                                                                 n
-                                                                                 \times
-                                                                                 m
-                                                                                 =
-                                                                                 q$\\
-                                                                                 % $\ioz^{RR^{\prime}}$ & Inter-regional transaction matrix & $\ioz^{RR^{\prime}} =
-                                                                                 % (z_{ff^{\prime}}^{RR^{\prime}})_{\substack{f
-                                                                                 % \in
-                                                                                 % \rfirmsset[R]\\f^{\prime}
-                                                                                 % \in \rfirmsset[R^{\prime}]\\(R,R^{\prime}) \in \regionsset}}$ \\
+                                                                                $|\firmsset|
+                                                                                =
+                                                                                n
+                                                                                \times
+                                                                                m
+                                                                                =
+                                                                                q$\\
+                                                                                % $\ioz^{RR^{\prime}}$ & Inter-regional transaction matrix & $\ioz^{RR^{\prime}} =
+                                                                                % (z_{ff^{\prime}}^{RR^{\prime}})_{\substack{f
+                                                                                % \in
+                                                                                % \rfirmsset[R]\\f^{\prime}
+                                                                                % \in \rfirmsset[R^{\prime}]\\(R,R^{\prime}) \in \regionsset}}$ \\
       $\ioz$ & Global transaction matrix (flows from $f$ to $f^{\prime}$) & $\ioz = (z_{ff^{\prime}})_{f,f^{\prime} \in \firmsset}$ \\
       % $\ioy^{RR^{\prime}}$ & Inter-regional final demand matrix & $\ioy^{RR^{\prime}} =  (y_{f}^{RR^{\prime}})_{\substack{f \in \rfirmsset\\(R,R^{\prime}) \in \regionsset}}$ \\
       $\ioy$ & Global final demand matrix (flows from $f$ to $R$) & $\ioy = (y_{fR})_{f \in \firmsset}$ \\
@@ -1099,7 +1100,16 @@ the value in the study, but their open-source code uses a value of 6 weeks.
 
 \input{parameters_table.tex}
 
+\onlyinsubfile{
+{\printglossary[type=\acronymtype,title=Acronyms]}
+\printbibliography
+}
+
+\end{document}
 %%% Local Variables:
 %%% mode: LaTeX
-%%% TeX-master: "./main"
+%%% TeX-master: t
+%%% TeX-engine: xetex
+%%% TeX-output-dir: "./model-standalone"
+%%% LaTeX-biblatex-use-Biber: t
 %%% End:

@@ -11,8 +11,12 @@
 \overfullrule=2cm
 
 \documentclass[11pt,a4paper]{book}
+\usepackage{subfiles}
+\newcommand{\onlyinsubfile}[1]{#1}
+\newcommand{\notinsubfile}[1]{}
 \input{config/packages} % mise en forme globale du document
-\input{config/macro.tex} % macro Latex
+\input{config/book-config}
+\input{config/macro} % macro Latex
 \input{glossaire.tex} % import du glossaire
 \addbibresource{./refs.bib}
 
@@ -32,6 +36,9 @@
 
 \begin{document}
 
+\renewcommand{\onlyinsubfile}[1]{}
+\renewcommand{\notinsubfile}[1]{#1}
+
 \maketitle
 
 \frontmatter
@@ -46,8 +53,10 @@
 %%%%%%%%%%%%%%%% CHAPITRES %%%%%%%%%%%%%%%%%%
 \mainmatter
 \setcounter{page}{1}
+
 \input{lit-review}
-\input{model}
+
+\subfile{model}
 
 %%%%%%%%%%%%%%%% AUTRES PAGES %%%%%%%%%%%%%%%%%%
 
@@ -59,8 +68,9 @@
 \end{document}
 
 %%% Local Variables:
-%%% coding: utf-8
-%%% mode: latex
-%%% TeX-master: t
+%%% mode: LaTeX
 %%% TeX-engine: xetex
+%%% TeX-master: t
+%%% TeX-output-dir: "./build"
+%%% LaTeX-biblatex-use-Biber: t
 %%% End:
