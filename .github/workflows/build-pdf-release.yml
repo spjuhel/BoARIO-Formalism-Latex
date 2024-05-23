@@ -12,23 +12,20 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up TeXLive
+    - name: Compile Latex
       uses: xu-cheng/latex-action@v3
       with:
-        latexmk-flags: -pdf
-        # If you need additional packages, list them here
-        packages: texlive-latex-extra texlive-fonts-recommended
-
-    - name: Compile LaTeX document
-      run: |
-        latexmk -pdfxe main.tex -jobname=book
-        latexmk -pdfxe model.tex -jobname=model-standalone
+        root_file: |
+          main.tex
+          model.tex
+        latexmk_use_xelatex: true
+        latexmk_shell_escape: true   
 
     - name: Upload Book to release
       uses: Shopify/upload-to-release@v2.0.0
       with:
         name: book
-        path: book.pdf
+        path: main.pdf
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         content-type: application/pdf # Optional
 
@@ -36,6 +33,6 @@ jobs:
       uses: Shopify/upload-to-release@v2.0.0
       with:
         name: book
-        path: model-standalone.pdf
+        path: model.pdf
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         content-type: application/pdf # Optional
