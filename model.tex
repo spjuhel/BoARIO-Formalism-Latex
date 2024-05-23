@@ -1,15 +1,42 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\onlyinsubfile{
+\pretitle{}
+\posttitle{}
+
+% Title page content
+\title{\LARGE \textbf{ARIO: the Adaptive Regional Input Output model} \\[0.5cm]
+  \huge An extensive indirect impact assessment model and its python implementation.}
+\author{}
+\date{\large \today}
+
+\maketitle
+}
 
 \notinsubfile{\chapter{Description of the ARIO indirect economic cost model}\label{ch_boario}}
+
+\onlyinsubfile{
+\section{Introduction}
+\label{sec:intro-model}
+
+The Adaptive Regional Input Output or ARIO model is an indirect economic impact
+assessment model originally presented in
+\textcite{hallegatte-2008-adapt-region, hallegatte-2013-model-role}. The ARIO
+model extends the ``traditional'' input-output (IO) framework commonly used for
+indirect impact assessment with additional adaptive dynamics, and has been
+widely used in the literature. Many different implementation exist sometime
+assuming different modeling choices. This document attempts at producing an
+up-to-date description of the model corresponding to its python open-source
+implementation \texttt{boario} (\url{https://spjuhel.github.io/BoARIO/}), and
+serves as a formal reference for the studies using the package.
+}
 
 \section{Short Description}
 \label{sec:depth-descr-ario}
 
-This section presents the ARIO model and the implementation we
-developed during the thesis. We strongly encourage the reader to consult the full
-description in appendix~\Cref{sec:full-description-ARIO} where we provide a more
+This section briefly presents the ARIO model. We strongly encourage the reader to consult the full
+description~\Cref{sec:full-description-ARIO} where we provide a more
 in depth analysis of the different components of the model, as well as a
 reflection on the parameters values that were used in the literature.
 
@@ -28,7 +55,7 @@ industries of the same sector. Each industry keeps an inventory of inputs it
 requires for production. These inventories are expressed for each
 input as the number of simulation steps\footnote{Usually one day, but this is
   actually a modeling choice in BoARIO.} an industry can produce with said input
-while maintaining it current production level. Each industry answers a total demand consisting of a
+while maintaining its current production level. Each industry answers a total demand consisting of a
 share of the final demand (accounting for household consumption, public spending
 and private investments) of all regions (i.e., both local demand and export) and
 a share of the intermediate demand (made up of inputs inventory resupply
