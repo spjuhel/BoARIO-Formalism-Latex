@@ -3,7 +3,8 @@ name: Build PDF from LaTeX
 on:
   release:
     types: [created, published, edited, prereleased]
-
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
