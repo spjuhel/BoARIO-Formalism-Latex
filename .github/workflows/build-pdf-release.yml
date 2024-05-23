@@ -1,0 +1,41 @@
+name: Build PDF from LaTeX
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up TeXLive
+      uses: xu-cheng/latex-action@v3
+      with:
+        latexmk-flags: -pdf
+        # If you need additional packages, list them here
+        packages: texlive-latex-extra texlive-fonts-recommended
+
+    - name: Compile LaTeX document
+      run: |
+        latexmk -pdfxe main.tex -jobname=book
+        latexmk -pdfxe model.tex -jobname=model-standalone
+
+    - name: Upload Book to release
+      uses: Shopify/upload-to-release@v2
+      with:
+        name: book
+        path: book.pdf
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        content-type: application/pdf # Optional
+
+    - name: Upload Model to release
+      uses: Shopify/upload-to-release@v2
+      with:
+        name: book
+        path: model-standalone.pdf
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        content-type: application/pdf # Optional
